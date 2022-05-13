@@ -1,0 +1,11 @@
+.App {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.page-content {
+    width: 1230px;
+    /* // 组件居中 */
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 75vh;
+}
