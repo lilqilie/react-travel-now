@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ProductCollection.module.css";
 import { Row, Col, Typography, Divider } from "antd";
-import { ProductImage } from "./ProductImage";
+import { ProductImageComponent } from "./ProductImage";
 
 interface PropsType {
   // 可能是js类型组件,所以是JSX.
@@ -21,7 +21,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
           <Col span={20}>
             <Row>
               <Col span={12}>
-                <ProductImage
+                <ProductImageComponent
                   id={products[0].id}
                   size={"large"}
                   title={products[0].title}
@@ -32,7 +32,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
               <Col span={12}>
                 <Row>
                   <Col span={12}>
-                    <ProductImage
+                    <ProductImageComponent
                       id={products[1].id}
                       size="small"
                       title={products[1].title}
@@ -41,7 +41,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
                     />
                   </Col>
                   <Col span={12}>
-                    <ProductImage
+                    <ProductImageComponent
                       id={products[2].id}
                       size="small"
                       title={products[2].title}
@@ -52,7 +52,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
                 </Row>
                 <Row>
                   <Col span={12}>
-                    <ProductImage
+                    <ProductImageComponent
                       id={products[3].id}
                       size="small"
                       title={products[3].title}
@@ -61,7 +61,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
                     />
                   </Col>
                   <Col span={12}>
-                    <ProductImage
+                    <ProductImageComponent
                       id={products[4].id}
                       size="small"
                       title={products[4].title}
@@ -74,7 +74,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
             </Row>
             <Row>
               <Col span={6}>
-                <ProductImage
+                <ProductImageComponent
                   id={products[5].id}
                   size="small"
                   title={products[5].title}
@@ -83,7 +83,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
                 />
               </Col>
               <Col span={6}>
-                <ProductImage
+                <ProductImageComponent
                   id={products[6].id}
                   size="small"
                   title={products[6].title}
@@ -92,7 +92,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
                 />
               </Col>
               <Col span={6}>
-                <ProductImage
+                <ProductImageComponent
                   id={products[7].id}
                   size="small"
                   title={products[7].title}
@@ -101,7 +101,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
                 />
               </Col>
               <Col span={6}>
-                <ProductImage
+                <ProductImageComponent
                   id={products[8].id}
                   size="small"
                   title={products[8].title}
