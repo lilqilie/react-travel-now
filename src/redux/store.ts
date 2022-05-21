@@ -1,16 +1,68 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import {applyMiddleware } from 'redux';
 import languageReducer from "./language/languageReducer";
 import recommendProductsReducer from "./recommendProducts/recommendProductsReducer";
 import thunk from "redux-thunk";
 import { actionLog } from "./middlewares/actionLog";
+import {ProductDetailSlice} from './productDetail/slice'
+import { combineReducers, configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import { ProductSearchSlice } from './productSearch/slice';
+import { userSlice } from './user/slice';
+import { shoppingCartSlice } from './shoppingCart/slice';
+import { orderSlice } from './order/slice';
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["user"]
+}
 
 const rootReducer = combineReducers({
     language: languageReducer,
-    recommendProducts: recommendProductsReducer
+    recommendProducts: recommendProductsReducer,
+    productDetail: ProductDetailSlice.reducer,
+    productSearch: ProductSearchSlice.reducer,
+    user: userSlice.reducer,
+    shoppingCart:shoppingCartSlice.reducer,
+    order:orderSlice.reducer
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));
+// const store = (rootReducer, applyMiddleware(thunk, actionLog));
+// const store = configureStore({
+//     reducer: rootReducer,
+//     middleware: (getDefaultMiddleware)=>[...getDefaultMiddleware(), actionLog],
+//     // middleware: [actionLog],
+//     // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionLog),
+//     devTools: true,
+// })
+
+// export type RootState = ReturnType<typeof store.getState>
+
+// export default store;
+
+
+// const rootReducer = combineReducers({
+//     language: languageReducer,
+//     recommendProducts: recommendProductsReducer,
+//     productDetail: productDetailSlice.reducer,
+//     productSearch: productSearchSlice.reducer,
+//     user: userSlice.reducer,
+//     shoppingCart: shoppingCartSlice.reducer,
+//     order: orderSlice.reducer
+// })
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+// const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), actionLog],
+  devTools: true,
+});
+// 包装
+const persistor = persistStore(store)
 
 export type RootState = ReturnType<typeof store.getState>
 
-export default store;
+export default { store, persistor };

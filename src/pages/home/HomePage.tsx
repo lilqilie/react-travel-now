@@ -1,55 +1,68 @@
 import styles from "./HomePage.module.css";
-import React, { Component } from 'react';
-import { Header, Footer, Carousel, SideMenu, ProductCollection, BusinessPartners } from "../../components";
-import {Row, Col, Typography, Spin} from 'antd'
-import sideImage1 from '../../assets/images/sider_2019_12-09.png'
-import sideImage2 from '../../assets/images/sider_2019_02-04.png'
-import sideImage3 from '../../assets/images/sider_2019_02-04-2.png'
+import React, { Component } from "react";
+import {
+  Header,
+  Footer,
+  Carousel,
+  SideMenu,
+  ProductCollection,
+  BusinessPartners,
+} from "../../components";
+import { Row, Col, Typography, Spin } from "antd";
+import sideImage1 from "../../assets/images/sider_2019_12-09.png";
+import sideImage2 from "../../assets/images/sider_2019_02-04.png";
+import sideImage3 from "../../assets/images/sider_2019_02-04-2.png";
 import { withTranslation, WithTranslation } from "react-i18next";
-import axios from 'axios'
-import {connect, MapStateToProps} from 'react-redux'
-import {RootState} from '../../redux/store'
-import {giveMeDataActionCreator} from '../../redux/recommendProducts/recommendProductsActions'
+import axios from "axios";
+import { connect, MapStateToProps } from "react-redux";
+import { RootState } from "../../redux/store";
+import { giveMeDataActionCreator } from "../../redux/recommendProducts/recommendProductsActions";
 
-
-const mapStateToProps = (states:RootState) =>{
+const mapStateToProps = (states: RootState) => {
   return {
     loading: states.recommendProducts.loading,
     error: states.recommendProducts.error,
-    productList: states.recommendProducts.productList
-    
-  }
-}
+    productList: states.recommendProducts.productList,
+  };
+};
 
-const mapDispatchToProps = (dispatch)=>{
+const mapDispatchToProps = (dispatch) => {
   return {
-    giveMeData: ()=>{
-      dispatch(giveMeDataActionCreator())
-    }
-}}
+    giveMeData: () => {
+      dispatch(giveMeDataActionCreator());
+    },
+  };
+};
 
 type PropsType = WithTranslation &
-  ReturnType<typeof mapStateToProps>& ReturnType<typeof mapDispatchToProps>
+  ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
 
 class HomePageComponent extends React.Component<PropsType> {
-  
-  async componentDidMount(){
-    this.props.giveMeData()
+  async componentDidMount() {
+    this.props.giveMeData();
   }
-    
-  
 
   render() {
     // console.log(this.props.t)
     const { t, productList, loading, error } = this.props;
-    if (loading){
-      return <Spin
-      size='large' style={{marginTop:200, marginBottom:200, marginLeft:'auto', marginRight:"auto",
-      width:'100%'}}></Spin>
+    if (loading) {
+      return (
+        <Spin
+          size="large"
+          style={{
+            marginTop: 200,
+            marginBottom: 200,
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "100%",
+          }}
+        ></Spin>
+      );
     }
 
-    if(error){
-      return <div> error: {error}</div>
+    if (error) {
+      return <div> error: {error}</div>;
     }
 
     return (
@@ -100,4 +113,7 @@ class HomePageComponent extends React.Component<PropsType> {
   }
 }
 
-export const HomePage = connect(mapStateToProps, mapDispatchToProps)(withTranslation()(HomePageComponent))
+export const HomePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(HomePageComponent));

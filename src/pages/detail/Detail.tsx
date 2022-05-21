@@ -1,36 +1,52 @@
 import React, { useState, useEffect } from "react";
-import { Spin, Row, Col, DatePicker, Divider, Typography } from "antd";
-
-// import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  Spin,
+  Row,
+  Col,
+  DatePicker,
+  Divider,
+  Typography,
+  Anchor,
+  Menu,
+} from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { addShoppingCartItem } from "../../redux/shoppingCart/slice";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { commentMockData } from "./mockup";
 import styles from "./Detail.module.css";
-import { Header, Footer, ProductIntro, ProductCollection, ProductComments } from "../../components";
-// interface MatchParams {
-//     touristRouteId: string
-// }
+import {
+  Header,
+  Footer,
+  ProductIntro,
+  ProductCollection,
+  ProductComments,
+} from "../../components";
+import {
+  ProductDetailSlice,
+  getProductDetail,
+} from "../../redux/productDetail/slice";
+import { useSelector } from "../../redux/hooks";
+import { useDispatch } from "react-redux";
+
 const { RangePicker } = DatePicker;
+interface MatchParams {
+  touristRouteId: string;
+}
 export const Detail: React.FC = () => {
   const { touristRouteID } = useParams();
-  // console.log(params)
-  const [loading, setLoading] = useState<boolean>(true);
-  const [product, setProduct] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
+  console.log("touristRouteId:", touristRouteID);
+  const jwt = useSelector((s) => s.user.token) as string;
+  const shoppingCartLoading = useSelector((s) => s.shoppingCart.loading);
+
+  const loading = useSelector((state) => state.productDetail.loading);
+  const error = useSelector((state) => state.productDetail.error);
+  const product = useSelector((state) => state.productDetail.data);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const { data } = await axios.get(
-          `http://123.56.149.216:8080/api/touristRoutes/${touristRouteID}`
-        );
-        setProduct(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-    fetchData();
+    dispatch(getProductDetail(touristRouteID) as any);
   }, []);
   // false loading
   if (loading) {
@@ -72,12 +88,42 @@ export const Detail: React.FC = () => {
               ></ProductIntro>
             </Col>
             <Col span={11}>
+              <Button
+                style={{ marginTop: 50, marginBottom: 30, display: "block" }}
+                type="primary"
+                danger
+                loading={shoppingCartLoading}
+                onClick={() => {
+                  dispatch(
+                    // addShoppingCartItem({ jwt, touristRouteId: product.id }) as any);
+                    addShoppingCartItem({ jwt, touristRouteId: product.id })
+                  );
+                }}
+              >
+                <ShoppingCartOutlined></ShoppingCartOutlined>
+                加入购物车
+              </Button>
               <RangePicker open style={{ marginTop: "20" }} />
             </Col>
           </Row>
         </div>
         {/* 锚点菜单 */}
-        <div className={styles["product-detail-anchor"]}></div>
+        <Anchor className={styles["product-detail-anchor"]}>
+          <Menu mode="horizontal">
+            <Menu.Item key="1">
+              <Anchor.Link href="#feature" title="产品特色"></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <Anchor.Link href="#fees" title="费用"></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key="3">
+              <Anchor.Link href="#notes" title="预订须知"></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Anchor.Link href="#comments" title="游客评价"></Anchor.Link>
+            </Menu.Item>
+          </Menu>
+        </Anchor>
         {/* 产品特色 */}
         <div id="feature" className={styles["product-detail-container"]}>
           <Divider orientation={"center"}>
@@ -89,7 +135,7 @@ export const Detail: React.FC = () => {
           ></div>
         </div>
         {/* 费用 */}
-        <div id="fee" className={styles["product-detail-container"]}>
+        <div id="fees" className={styles["product-detail-container"]}>
           <Divider orientation={"center"}>
             <Typography.Title level={3}>价格</Typography.Title>
           </Divider>
@@ -109,7 +155,14 @@ export const Detail: React.FC = () => {
           ></div>
         </div>
         {/* 商品评价 */}
-        <div id="comments" className={styles["product-detail-container"]}></div>
+        <div id="comments" className={styles["product-detail-container"]}>
+          <Divider orientation={"center"}>
+            <Typography.Title level={3}>评论</Typography.Title>
+          </Divider>
+          <div style={{ margin: 40 }}>
+            <ProductComments data={commentMockData}></ProductComments>
+          </div>
+        </div>
       </div>
       <Footer></Footer>
     </>

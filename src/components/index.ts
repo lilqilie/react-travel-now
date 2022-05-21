@@ -7,4 +7,10 @@ export * from './businessPartners'
 export * from './productIntro'
 export * from './productComments'
 export * from './productCollection'
+export * from './productList'
+export * from './filter'
+export * from './paymentCard'
+export * from './paymentForm'
+export * from './checkOutCard'
+
 

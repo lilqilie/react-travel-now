@@ -6,13 +6,24 @@
   }
   
   .product-intro-container {
-      margin-top: 20px;
-      background-color: white;
+      margin-top: 10px;
+      /* height: 10px; */
+      background-color: #fff;
+      /* background-color: rgb(49, 169, 107); */
     }
     
     .product-detail-anchor {
-      margin-top: 20px;
-      margin-bottom: 20px;
+      text-align: right;
+      /* margin-top: 10px; */
+      /* margin-bottom: 10px; */
+      height: 30px;
+      /* margin-right:100px; */
+    }
+
+    .product-detail-anchor-font {
+      background-color: rgb(49, 169, 107);
+      font-size: 30px;
+      margin-left: 50px
     }
     
     .product-detail-container {
