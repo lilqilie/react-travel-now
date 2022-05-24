@@ -93,8 +93,7 @@ export const Header: React.FC = () => {
               <span
                 style={{
                   marginRight: 15,
-                  marginBottom: 15,
-                  textAlign: "center",
+                  marginTop: -5,
                 }}
               >
                 {t("header.welcome")}

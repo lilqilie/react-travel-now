@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# 基于React的旅游网
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 项目介绍
 
-## Available Scripts
+是一个仿携程网的的前端项目，基于React+Redux+Antd+TS实现。主要包括旅游首页、登录注销、旅游商品详情页、加入购物车、订单支付等功能。
 
-In the project directory, you can run:
+### 项目演示
 
-### `npm start`
+首页![Snipaste_2022-05-24_19-13-22](D:\Docs\md DOCs\Snipaste_2022-05-24_19-13-22.jpg)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+注册页面
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image-20220524191615577](D:\Docs\md DOCs\image-20220524191615577.png)
 
-### `npm run build`
+用户搜索页面
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image-20220524204801831](D:\Docs\md DOCs\image-20220524204801831.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+商品详情页
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image-20220524191918159](D:\Docs\md DOCs\image-20220524191918159.png)
 
-### `npm run eject`
+![image-20220524192004372](D:\Docs\md DOCs\image-20220524192004372.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+购物车页面
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image-20220524192107922](D:\Docs\md DOCs\image-20220524192107922.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+支付页面
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image-20220524192126763](D:\Docs\md DOCs\image-20220524192126763.png)

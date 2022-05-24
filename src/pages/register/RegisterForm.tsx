@@ -22,7 +22,7 @@ export const RegisterForm = () => {
         password: values.password,
         confirmPassword: values.confirm,
       });
-      navigate("/sign");
+      navigate("/signIn");
     } catch (error) {
       alert("注册失败！");
     }
