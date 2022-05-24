@@ -6,28 +6,28 @@
 
 ### 项目演示
 
-首页![Snipaste_2022-05-24_19-13-22](D:\Docs\md DOCs\Snipaste_2022-05-24_19-13-22.jpg)
+首页![content](./pics/Snipaste_2022-05-24_19-13-22.jpg)
 
 
 
 注册页面
 
-![image-20220524191615577](D:\Docs\md DOCs\image-20220524191615577.png)
+![content](./pics/image-20220524191615577.png)
 
 用户搜索页面
 
-![image-20220524204801831](D:\Docs\md DOCs\image-20220524204801831.png)
+![content](./pics/image-20220524204801831.png)
 
 商品详情页
 
-![image-20220524191918159](D:\Docs\md DOCs\image-20220524191918159.png)
+![content](./pics/image-20220524191918159.png)
 
-![image-20220524192004372](D:\Docs\md DOCs\image-20220524192004372.png)
+![content](./pics/image-20220524192004372.png)
 
 购物车页面
 
-![image-20220524192107922](D:\Docs\md DOCs\image-20220524192107922.png)
+![content](./pics/image-20220524192107922.png)
 
 支付页面
 
-![image-20220524192126763](D:\Docs\md DOCs\image-20220524192126763.png)
+![content](./pics/image-20220524192126763.png)
