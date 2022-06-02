@@ -28,30 +28,6 @@ const rootReducer = combineReducers({
     order:orderSlice.reducer
 })
 
-// const store = (rootReducer, applyMiddleware(thunk, actionLog));
-// const store = configureStore({
-//     reducer: rootReducer,
-//     middleware: (getDefaultMiddleware)=>[...getDefaultMiddleware(), actionLog],
-//     // middleware: [actionLog],
-//     // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(actionLog),
-//     devTools: true,
-// })
-
-// export type RootState = ReturnType<typeof store.getState>
-
-// export default store;
-
-
-// const rootReducer = combineReducers({
-//     language: languageReducer,
-//     recommendProducts: recommendProductsReducer,
-//     productDetail: productDetailSlice.reducer,
-//     productSearch: productSearchSlice.reducer,
-//     user: userSlice.reducer,
-//     shoppingCart: shoppingCartSlice.reducer,
-//     order: orderSlice.reducer
-// })
-
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 // const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));

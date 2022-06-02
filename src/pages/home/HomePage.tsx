@@ -41,11 +41,13 @@ type PropsType = WithTranslation &
 class HomePageComponent extends React.Component<PropsType> {
   async componentDidMount() {
     this.props.giveMeData();
+    console.log(this.props.productList);
   }
-
+  
+  
   render() {
-    // console.log(this.props.t)
     const { t, productList, loading, error } = this.props;
+    
     if (loading) {
       return (
         <Spin
@@ -86,6 +88,7 @@ class HomePageComponent extends React.Component<PropsType> {
             }
             sideImage={sideImage1}
             products={productList[0].touristRoutes}
+            
           />
           <ProductCollection
             title={

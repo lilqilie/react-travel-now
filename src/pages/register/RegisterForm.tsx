@@ -32,12 +32,31 @@ export const RegisterForm = () => {
     console.log("Failed:", errorInfo);
   };
 
+  const onFinishWithThro = throttle(onFinish, 1000);
+
+  function throttle(f: any, wait: number) {
+    let d = new Date();
+
+    console.log("clicked at" + d.getSeconds());
+
+    let timer;
+    return (args) => {
+      if (timer) return;
+      timer = setTimeout(() => {
+        f(args);
+        timer = null;
+        console.log("being throttle" + d.getSeconds());
+      }, wait);
+    };
+  }
+
   return (
     <Form
       {...layout}
       name="basic"
       initialValues={{ remember: true }}
-      onFinish={onFinish}
+      // onFinish={onFinish}
+      onFinish={onFinishWithThro}
       onFinishFailed={onFinishFailed}
       className={styles["register-form"]}
     >
@@ -82,7 +101,7 @@ export const RegisterForm = () => {
 
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
-          Submit
+          提交
         </Button>
       </Form.Item>
     </Form>

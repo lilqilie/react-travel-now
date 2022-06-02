@@ -73,7 +73,7 @@ export const PaymentCard: React.FC<PropsType> = ({
       actions={[
         <Button type="primary" danger onClick={onCheckout} loading={loading}>
           <CheckCircleOutlined />
-          下单支付
+          支付
         </Button>,
         <Button onClick={onShoppingCartClear} loading={loading}>
           <DeleteOutlined />
